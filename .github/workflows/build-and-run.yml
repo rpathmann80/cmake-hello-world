@@ -20,7 +20,7 @@ jobs:
             - name: Build Project
               run: |
                 cd build
-                hello_world            
+                ./hello_world            
     finish:
       needs: [build-and-run]
       runs-on: ubuntu-latest
