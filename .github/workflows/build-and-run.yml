@@ -17,7 +17,7 @@ jobs:
                 cd build
                 cmake ../src/.
                 make                
-            - name: Build Project
+            - name: Run Project
               run: |
                 cd build
                 ./hello_world            
@@ -27,4 +27,3 @@ jobs:
       steps:
         - name: Finish
           run: echo "Finished!"
-            
