@@ -1,0 +1,53 @@
+name: Build and Run Project
+on: [workflow_dispatch]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: list contents
+              run: ls -al
+            - name: Get code
+              uses: actions/checkout@v4
+            - name: list contents again
+              run: ls -al
+            # - name: Install CMake
+            #   uses: ssrobins/install-cmake@v1              
+            #- name: Build Project
+            #  uses: threeal/cmake-action@v2.0.0                
+            #- name: install cmake
+            #  run: brew install cmake 
+            #   run: |
+            #     sudo apt update
+            #     sudo apt install cmake              
+            # - name: Get CMake
+            #   uses: symbitic/install-cmake@master   
+            - name: Get cmake version
+              run: cmake --version             
+            # - name: Build Project
+            #   uses: threeal/cmake-action@v2.0.0
+            #   with:
+            #     source-dir: src
+            #     build-dir: build
+    # deploy:
+    #   needs: build
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - name: Get code
+    #       uses: actions/checkout@v3
+    #     - name: Install NodeJS
+    #       uses: actions/setup-node@v3
+    #       with:
+    #         node-version: 18
+    #     - name: Install dependencies
+    #       run: npm ci
+    #     - name: Build project
+    #       run: npm run build
+    #     - name: Deploy
+    #       run: echo "Deploying ..."
+    # finish:
+    #   needs: [build, deploy]
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - name: Finish
+    #       run: echo "Finished!"
+            
