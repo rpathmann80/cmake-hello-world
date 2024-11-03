@@ -1,7 +1,7 @@
 name: Build and Run Project
 on: [workflow_dispatch]
 jobs:
-    build:
+    build-and-run:
         runs-on: ubuntu-latest
         steps:
             - name: list contents
@@ -17,26 +17,14 @@ jobs:
                 cd build
                 cmake ../src/.
                 make                
-    # deploy:
-    #   needs: build
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #     - name: Get code
-    #       uses: actions/checkout@v3
-    #     - name: Install NodeJS
-    #       uses: actions/setup-node@v3
-    #       with:
-    #         node-version: 18
-    #     - name: Install dependencies
-    #       run: npm ci
-    #     - name: Build project
-    #       run: npm run build
-    #     - name: Deploy
-    #       run: echo "Deploying ..."
-    # finish:
-    #   needs: [build, deploy]
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #     - name: Finish
-    #       run: echo "Finished!"
+            - name: Build Project
+              run: |
+                cd build
+                hello_world            
+    finish:
+      needs: [build-and-run]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Finish
+          run: echo "Finished!"
             
